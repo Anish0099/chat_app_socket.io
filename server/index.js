@@ -8,11 +8,17 @@ app.use(cors());
 
 const server = http.createServer(app);
 
+app.get('/', (req, res) => {
+    res.json({ message: 'Hello from server!' });
+})
+
 const io = new Server(server, {
     cors: {
-        origin: process.env.PORT || 'http://localhost:3000',
+        origin: 'http://localhost:3000',
         methods: ["GET", "POST"],
+        credentials: true
     },
+    transports: ['websocket', 'polling']
 });
 
 io.on('connection', (socket) => {
