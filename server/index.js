@@ -25,7 +25,7 @@ if (process.env.NODE_ENV === 'production') {
 // Socket.io Setup
 const io = new Server(server, {
     cors: {
-        origin: 'http://localhost:3000',
+        origin: 'https://chat-ak.vercel.app',
         methods: ["GET", "POST"],
         credentials: true
     },
