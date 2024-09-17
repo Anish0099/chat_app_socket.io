@@ -10,17 +10,7 @@ app.use(cors());
 const server = http.createServer(app);
 
 // Check the frontend
-if (process.env.NODE_ENV === 'production') {
-    const clientPath = path.join(__dirname, 'client', '.next');
-    app.use(express.static(clientPath));
-    app.get('*', (req, res) => {
-        res.sendFile(path.resolve(clientPath, 'server/app/index.html'));
-    });
-} else {
-    app.get('/', (req, res) => {
-        res.json({ message: 'Hello from server!' });
-    });
-}
+
 
 // Socket.io Setup
 const io = new Server(server, {
